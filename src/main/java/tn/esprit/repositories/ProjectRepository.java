@@ -1,13 +1,7 @@
-package tn.esprit.rh.achat.repositories;
+package tn.esprit.repositories;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-import tn.esprit.rh.achat.entities.Project;
+import org.springframework.data.jpa.repository.JpaRepository;
+import tn.esprit.entities.Project;
+public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
-import java.util.Date;
-import java.util.List;
-
-@Repository
-public interface ProjectRepository extends CrudRepository<Project, Integer> {
-   List<Project> findBySprintsStartDate(Date dateNow);
 }

@@ -1,9 +1,11 @@
-package tn.esprit.rh.achat.entities;
+package tn.esprit.entities;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 @Entity
@@ -11,7 +13,6 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @ToString
 public class User implements Serializable {
 
@@ -21,7 +22,6 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Setter(AccessLevel.NONE)
 	private int id;
 
 	private String email;
@@ -31,12 +31,11 @@ public class User implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Role role;
 
-
 	@ManyToMany
-	private Set<Project> projets;
+	@JsonIgnore
+	Set<Project> projectsDev;
 
-	@OneToMany
-	private Set<Project> masterProjets;
-
-
+	 @OneToMany
+	 @JsonIgnore
+	 Set<Project> projectsScrum;
 }

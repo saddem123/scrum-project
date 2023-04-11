@@ -1,8 +1,7 @@
-package tn.esprit.rh.achat.entities;
+package tn.esprit.entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,10 +20,9 @@ public class Sprint implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String description;
+	@Temporal(TemporalType.DATE)
 	private Date startDate;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
-	private Project projet;
-
-
+	Project project;
 }

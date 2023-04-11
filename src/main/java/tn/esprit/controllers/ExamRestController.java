@@ -1,16 +1,13 @@
-package tn.esprit.rh.achat.controllers;
+package tn.esprit.controllers;
 
 
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Primary;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.rh.achat.entities.Project;
-import tn.esprit.rh.achat.entities.Sprint;
-import tn.esprit.rh.achat.entities.User;
-import tn.esprit.rh.achat.services.IExamService;
+import tn.esprit.entities.Project;
+import tn.esprit.entities.Sprint;
+import tn.esprit.entities.User;
+import tn.esprit.services.IExamService;
 
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -20,7 +17,8 @@ public class ExamRestController {
     IExamService examService;
 
     @PostMapping("/ajouterUser")
-    public User addUser(User user){
+    public User addUser(@RequestBody User user){
+
         return examService.addUser(user);
     }
 
@@ -36,7 +34,7 @@ public class ExamRestController {
 
     @PutMapping("/assignProjectToScrum")
     public void assignProjectToScrum(int projectId, String fName, String lName){
-        examService.assignProjectToScrum(projectId,fName,lName);
+        examService.assignProjectToScrumMaster(projectId,fName,lName);
     }
 
     @GetMapping("/getProjectsByScrumMaster")
@@ -45,7 +43,9 @@ public class ExamRestController {
     }
 
     @PostMapping("/ajouterSprint/{idProject}")
-    public void addSprintAndAssignToProject(@RequestBody Sprint sprint,@PathVariable int idProject){
+    public void addSprintAndAssignToProject(@RequestBody Sprint sprint, @PathVariable int idProject){
         examService.addSprintAndAssignToProject(sprint,idProject);
     }
+
+
 }

@@ -1,4 +1,4 @@
-package tn.esprit.rh.achat.entities;
+package tn.esprit.entities;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -25,10 +25,13 @@ public class Project implements Serializable{
 	private int id;
 	private String title;
 	private String description;
-	@ManyToMany(mappedBy="projets")
-	@JsonIgnore
-	private Set<User> developpers;
 
-	@OneToMany(mappedBy = "projet", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "project", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	Set<Sprint> sprints;
+
+	@ManyToMany(mappedBy = "projectsDev")
+	Set<User> developers;
+
+
+
 }

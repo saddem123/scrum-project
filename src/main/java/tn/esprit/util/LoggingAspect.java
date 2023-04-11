@@ -1,4 +1,4 @@
-package tn.esprit.rh.achat.util;
+package tn.esprit.util;
 
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class LoggingAspect {
 
-    @AfterReturning("execution(void tn.esprit.rh.achat.services..*(..))")
+    @AfterReturning("execution(void tn.esprit..*(..))")
     public void logMethodEntry(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
-        log.info("With success" + name );
+        log.info("With success " + name );
     }
 }

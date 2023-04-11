@@ -1,4 +1,4 @@
-package tn.esprit.rh.achat.entities;
+package tn.esprit.entities;
 
 public enum Role {
 DEVELOPER,SCRUM_MASTER
