@@ -73,14 +73,13 @@ pipeline {
 			{
 				script
 				{
-					def mavenPom = readMavenPom file: 'pom.xml'
 
 				nexusArtifactUploader artifacts:
 				[
 					[
 						artifactId: 'examScrum',
 						classifier: '',
-						file: "target/examScrum-${mavenPom.version}.jar",
+						file: "target/examScrum-1.0.0.jar",
 						type: 'jar'
 					]
 				],
