@@ -11,13 +11,11 @@ pipeline {
 
     stages {
 
-        stage('Clone project')
-		{
-            steps
-			{
-                git branch: 'main'
+        stage("Cloning Project"){
+            steps {
+                git branch: 'main',
                 url: 'https://github.com/saddem123/scrum-project.git'
-                echo 'Pulling project from GIT'
+                echo 'checkout stage'
             }
         }
 
