@@ -86,12 +86,12 @@ pipeline {
 				],
 
 				credentialsId: 'nexus',
-				groupId: 'tn.esprit.rh',
+				groupId: 'tn.esprit',
 				nexusUrl: '192.168.1.134:8081',
 				nexusVersion: 'nexus3',
 				protocol: 'http',
 				repository: 'examScrum-release',
-				version: "${mavenPom.version}"
+				version: "1.0.0"
 				}
 			}
         }
