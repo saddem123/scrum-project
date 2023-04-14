@@ -67,32 +67,26 @@ pipeline {
             }
         }
 
-        stage('Deployement To Nexus')
-		{
-            steps
-			{
-				script
-				{
+        stage("Deploy To Nexus") {
+             steps {
+                   nexusArtifactUploader artifacts: [
+                         [
+                            artifactId: 'examenScrum',
+                              classifier: '',
+                              file: 'target/examenScrum-1.0.jar',
+                              type: 'jar'
+                         ]
 
-				nexusArtifactUploader artifacts:
-				[
-					[
-						artifactId: 'examScrum',
-						classifier: '',
-						file: "target/examScrum-1.0.0.jar",
-						type: 'jar'
-					]
-				],
+                   ],
+                   credentialsId: 'nexus3',
+                   groupId: 'tn.esprit',
+                   nexusUrl: '192.168.43.59:8081',
+                   nexusVersion: 'nexus3',
+                   protocol: 'http',
+                   repository: 'deploymentRepo',
+                   version: '1.0'
+             }
 
-				credentialsId: 'nexus',
-				groupId: 'tn.esprit',
-				nexusUrl: '192.168.1.134:8081',
-				nexusVersion: 'nexus3',
-				protocol: 'http',
-				repository: 'examScrum-release',
-				version: "1.0.0"
-				}
-			}
         }
 
 
