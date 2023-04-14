@@ -1,0 +1,10 @@
+version: '2.2'
+services:
+  database:
+    image: mysql:5.7
+    container_name: database
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE:
+    ports:
+      - 3307:3306
