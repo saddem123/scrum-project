@@ -16,7 +16,7 @@ pipeline {
             steps
 			{
                 git branch: 'main'
-                url : 'https://github.com/saddem123/scrum-project.git'
+                url: 'https://github.com/saddem123/scrum-project.git'
                 echo 'Pulling project from GIT'
             }
         }
