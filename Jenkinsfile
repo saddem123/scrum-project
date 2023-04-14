@@ -73,7 +73,7 @@ pipeline {
                          [
                             artifactId: 'examenScrum',
                               classifier: '',
-                              file: 'target/examenScrum-1.0.jar',
+                              file: 'target/examenScrum-1.0.0.jar',
                               type: 'jar'
                          ]
 
