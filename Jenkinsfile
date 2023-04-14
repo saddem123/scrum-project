@@ -15,7 +15,8 @@ pipeline {
 		{
             steps
 			{
-                echo 'Pulling project from GIT';
+                echo 'Pulling project from GIT',
+                git branch: 'main',
                 url : 'https://github.com/saddem123/scrum-project.git',
             }
         }
