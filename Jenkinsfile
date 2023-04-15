@@ -59,8 +59,6 @@ pipeline {
         stage("Deploy To Nexus") {
              steps {
                 nexusPublisher 
-                nexusInstanceId: 'nexus', 
-                nexusRepositoryId: 'releases',
                 packages: [[$class: 'MavenPackage', mavenCoordinate: [artifactId: 'examenScrum', groupId: 'tn.esprit', packaging: 'jar', version: '1.0.0', classifier: '', extension: 'jar'],
                 mavenAssetList: [[file: 'target/examenScrum-1.0.0.jar', classifier: '', extension: 'jar', type: '']]]],
                 credentialsId: 'nexus3',
