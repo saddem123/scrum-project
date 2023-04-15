@@ -86,7 +86,7 @@ pipeline {
 				{
                     script
 					{
-                        sh 'docker build -t examScrum-1.0.0 .'
+                        sh 'docker build -t examenscrum-1.0.0 .'
                         sh 'docker build -t mysql .'
 
                     }
@@ -105,8 +105,8 @@ pipeline {
 
                         sh 'docker login -u ysaddem -p tn27190278mbyys'
 
-                        sh 'docker tag  ysaddem-1.0.0 ysaddem/examScrum-1.0.0:tag1'
-                        sh 'docker push ysaddem/examScrum-1.0.0'
+                        sh 'docker tag  examenscrum-1.0.0 ysaddem/examescrum-1.0.0:tag1'
+                        sh 'docker push ysaddem/examenscrum-1.0.0'
 
                         sh 'docker tag  mysql ysaddem/mysql:1'
                         sh 'docker push ysaddem/mysql'

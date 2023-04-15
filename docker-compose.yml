@@ -1,7 +1,7 @@
 version: "3"
 services:
   backend:
-    image: ysaddem/examScrum-1.0.0:tag8
+    image: ysaddem/examescrum-1.0.0:tag1
     ports:
       - "8089:8089"
     restart: unless-stopped
