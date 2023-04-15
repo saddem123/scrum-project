@@ -3,11 +3,6 @@ pipeline {
 
     agent any
 
-       tools {
-          maven 'M2_HOME'
-      }
-
-
 
     stages {
 
@@ -80,7 +75,7 @@ pipeline {
                    ],
                    credentialsId: 'nexus3',
                    groupId: 'tn.esprit',
-                   nexusUrl: '192.168.43.59:8081',
+                   nexusUrl: '192.168.1.134:8081',
                    nexusVersion: 'nexus3',
                    protocol: 'http',
                    repository: 'deploymentRepo',
