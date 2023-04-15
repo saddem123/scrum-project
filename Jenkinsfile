@@ -106,10 +106,10 @@ pipeline {
                         sh 'docker login -u ysaddem -p tn27190278mbyys'
 
                         sh 'docker tag  examenscrum-1.0.0 ysaddem/examescrum-1.0.0:tag1'
-                        sh 'docker push ysaddem/examenscrum-1.0.0'
+                        sh 'docker push examenscrum-1.0.0'
 
                         sh 'docker tag  mysql ysaddem/mysql:1'
-                        sh 'docker push ysaddem/mysql'
+                        sh 'docker push mysql'
 
 
 
