@@ -14,48 +14,42 @@ pipeline {
             }
         }
 
-        stage ('Maven Clean')
-		{
+        stage ('Maven Clean'){
             steps
 			{
                 sh 'mvn clean'
             }
         }
 
-		stage ('Maven Compile')
-		{
+		stage ('Maven Compile'){
             steps
 			{
                 sh 'mvn compile'
             }
         }
 
-		stage ('Maven Sonar')
-		{
+		stage ('Maven Sonar'){
             steps
 			{
                 sh 'mvn sonar:sonar -Dsonar.host.url=http://192.168.1.134:9000 -Dsonar.login=admin -Dsonar.password=tn27190278mbyys'
             }
         }
 
-        stage ('Maven Test')
-		{
+        stage ('Maven Test'){
             steps
 			{
                 sh 'mvn test'
             }
         }
 
-		stage('Maven Build')
-	    {
+		stage('Maven Build'){
             steps
 			{
                 sh 'mvn package'
             }
         }
 
-		stage ('Maven Install')
-		{
+		stage ('Maven Install'){
             steps
 			{
                 sh 'mvn install'
@@ -79,7 +73,7 @@ pipeline {
                    nexusVersion: 'nexus3',
                    protocol: 'http',
                    repository: 'deploymentRepo',
-                   version: '1.0'
+                   version: '1.0.0'
              }
 
         }
@@ -98,6 +92,9 @@ pipeline {
             }
 
 
+
+        
+        
         stage('Docker Push Image'){
                 steps
 				{
@@ -118,8 +115,8 @@ pipeline {
 
                 }
         }
-        stage('Docker-Compose')
-		{
+
+        stage('Docker-Compose'){
                 steps
 				{
                     script
