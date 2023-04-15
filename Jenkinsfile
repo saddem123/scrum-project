@@ -45,7 +45,7 @@ pipeline {
 		stage('Maven Build'){
             steps
 			{
-                sh 'mvn package -DskipTests=true'
+                sh 'mvn package'
             }
         }
 
@@ -56,35 +56,30 @@ pipeline {
             }
         }
 
-         stage('Deployement To Nexus')
-		{
-            steps
-			{
-				script
-				{
-				def mavenPom = readMavenPom file: 'pom.xml'
-				
-				nexusArtifactUploader artifacts:
-				[
-					[
-						artifactId: 'examenScrum',
-						classifier: '',
-						file: "target/examenScrum-${mavenPom.version}.jar",
-						type: 'jar'
-					]
-				], 
-				
-				credentialsId: 'nexus', 
-				groupId: 'tn.esprit', 
-				nexusUrl: '192.168.1.134:8081', 
-				nexusVersion: 'nexus3', 
-				protocol: 'http', 
-				repository: 'deploymentRepo', 
-				version: "${mavenPom.version}"
-				}				
-			}
+        stage("Upload Jar  To Nexus") {
+            steps {  
+               nexusArtifactUploader artifacts: [ 
+                 [ 
+                    artifactId: 'examenScrum',  
+                      classifier: '',  
+                      file: 'target/examenScrum-1.0.0.jar',   
+                      type: 'jar' 
+                   ]  
+
+            ],  
+            credentialsId: 'nexus3', 
+            groupId: 'tn.esprit', 
+            nexusUrl: '192.168.1.134:8081', 
+            nexusVersion: 'nexus3', 
+            protocol: 'http', 
+            repository: 'maven-snapshots',  
+            version: '1.0' 
+
+
         }  
- 
+
+     } 
+
 
 		stage('Docker Build Image'){
                 steps
